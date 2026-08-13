@@ -1,0 +1,275 @@
+.information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.information > section {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.information > section:last-child {
+    border-bottom: none;
+}
+
+.information > section > h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Experience */
+.experience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.experienceCard {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--background-box);
+    border: 2px solid var(--color-primary);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    text-align: left;
+}
+
+.experienceRole {
+    margin: 0 0 0.75rem;
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
+
+.experiencePlace {
+    margin: 0 0 1rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+}
+
+.experienceText {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+/* Languages */
+.languageList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.languageItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.languageItem:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-alter);
+}
+
+.languageItem:hover .languageLevel {
+    color: inherit;
+}
+
+.flag {
+    width: 48px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.languageName {
+    font-weight: bold;
+}
+
+.languageLevel {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+/* Education & Certifications */
+.educationCard {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    background-color: var(--background-box);
+    border: 2px solid var(--color-primary);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    text-align: left;
+}
+
+.educationTitle {
+    margin: 0 0 0.25rem;
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+
+.educationPlace {
+    margin: 0 0 0.25rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.educationDate {
+    margin: 0;
+}
+
+.certificationList {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.certificationItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+}
+
+.certificationName {
+    font-weight: bold;
+}
+
+.certificationMeta {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+/* Contact */
+.contactList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0 0 2rem;
+    padding: 0;
+}
+
+.contactLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.contactLink:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-alter);
+}
+
+.contactImage {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.linkedinLink {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.linkedinLink:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.contactLink[role='button'] {
+    cursor: pointer;
+    background: none;
+    font: inherit;
+}
+
+.copyToast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: var(--color-text-alter);
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    animation: toastFade 5s ease forwards;
+}
+
+@keyframes toastFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+}
+
+/* Download */
+.downloadButton {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.downloadButton:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-alter);
+}
+
+@media (min-width: 768px) {
+    .contactImage {
+        width: 48px;
+        height: 48px;
+    }
+}
