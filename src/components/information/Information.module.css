@@ -5,8 +5,14 @@
 }
 
 .information > section {
-    padding: 2rem 1rem;
+    padding: 3.5rem 1.5rem;
     text-align: center;
+    position: relative;
+    animation: sectionRise 0.6s ease both;
+}
+
+.information > section:nth-child(even) {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 112, 243, 0.05) 50%, transparent 100%);
 }
 
 .information > section:last-child {
@@ -14,8 +20,38 @@
 }
 
 .information > section > h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.information > section > h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+@keyframes sectionRise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Experience */
@@ -31,28 +67,36 @@
     margin: 0 auto;
     background-color: var(--background-box);
     border: 2px solid var(--color-primary);
-    border-radius: 10px;
-    padding: 1.5rem 2rem;
+    border-radius: 14px;
+    padding: 2rem 2.25rem;
     text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.experienceCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 112, 243, 0.25);
+    border-color: var(--color-secondary);
 }
 
 .experienceRole {
     margin: 0 0 0.75rem;
     color: var(--color-primary);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .experiencePlace {
     margin: 0 0 1rem;
     font-weight: bold;
     color: var(--color-secondary);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .experienceText {
     margin: 0;
-    line-height: 1.6;
-    font-size: 1.2rem;
+    line-height: 1.7;
+    font-size: 1.3rem;
 }
 
 /* Languages */
@@ -60,7 +104,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.75rem;
     margin: 0;
     padding: 0;
 }
@@ -69,17 +113,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    min-width: 120px;
-    padding: 1rem 1.5rem;
+    gap: 0.75rem;
+    min-width: 160px;
+    padding: 1.5rem 1.75rem;
     border: 2px solid var(--color-primary);
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: 14px;
+    background-color: var(--background-box);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .languageItem:hover {
     background-color: var(--color-primary);
     color: var(--color-text-alter);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 16px 30px rgba(0, 112, 243, 0.3);
 }
 
 .languageItem:hover .languageLevel {
@@ -87,47 +135,62 @@
 }
 
 .flag {
-    width: 48px;
-    height: 32px;
+    width: 144px;
+    height: 96px;
     object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.languageItem:hover .flag {
+    transform: scale(1.05);
 }
 
 .languageName {
     font-weight: bold;
+    font-size: 1.3rem;
 }
 
 .languageLevel {
     color: var(--color-secondary);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 /* Education & Certifications */
 .educationCard {
     max-width: 700px;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.75rem;
     background-color: var(--background-box);
     border: 2px solid var(--color-primary);
-    border-radius: 10px;
-    padding: 1.5rem 2rem;
+    border-radius: 14px;
+    padding: 2rem 2.25rem;
     text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.educationCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 112, 243, 0.25);
 }
 
 .educationTitle {
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.4rem;
     color: var(--color-primary);
-    font-size: 1.3rem;
+    font-size: 1.6rem;
 }
 
 .educationPlace {
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.4rem;
     font-weight: bold;
     color: var(--color-secondary);
+    font-size: 1.3rem;
 }
 
 .educationDate {
     margin: 0;
+    font-size: 1.2rem;
 }
 
 .certificationList {
@@ -136,7 +199,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .certificationItem {
@@ -144,18 +207,27 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.75rem;
     border: 2px solid var(--color-primary);
-    border-radius: 8px;
+    border-radius: 12px;
+    background-color: var(--background-box);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificationItem:hover {
+    transform: translateX(6px);
+    box-shadow: 0 10px 22px rgba(0, 112, 243, 0.22);
 }
 
 .certificationName {
     font-weight: bold;
+    font-size: 1.3rem;
 }
 
 .certificationMeta {
     color: var(--color-secondary);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 /* Contact */
@@ -163,8 +235,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    margin: 0 0 2rem;
+    gap: 1.75rem;
+    margin: 0 0 2.5rem;
     padding: 0;
 }
 
@@ -172,19 +244,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
+    gap: 0.65rem;
+    padding: 1.25rem 1.75rem;
     border: 2px solid var(--color-primary);
-    border-radius: 8px;
+    border-radius: 14px;
+    background-color: var(--background-box);
     text-decoration: none;
     color: var(--color-primary);
     font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .contactLink:hover {
     background-color: var(--color-primary);
     color: var(--color-text-alter);
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 16px 30px rgba(0, 112, 243, 0.3);
 }
 
 .contactImage {
@@ -203,8 +280,9 @@
     text-decoration: none;
     color: var(--color-secondary);
     font-weight: bold;
+    font-size: 1.2rem;
     border-bottom: 2px solid var(--color-secondary);
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     transition: all 0.3s ease;
 }
 
@@ -227,9 +305,10 @@
     background-color: var(--color-primary);
     color: var(--color-text-alter);
     font-weight: bold;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    font-size: 1.15rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     animation: toastFade 5s ease forwards;
 }
@@ -256,24 +335,36 @@
 /* Download */
 .downloadButton {
     display: inline-block;
-    background-color: var(--color-secondary);
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     color: var(--color-text);
     text-decoration: none;
     font-weight: bold;
-    padding: 0.75rem 2rem;
-    border-radius: 6px;
-    font-size: 1.1rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
     transition: all 0.3s ease;
 }
 
 .downloadButton:hover {
-    background-color: var(--color-primary);
-    color: var(--color-text-alter);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 28px rgba(0, 112, 243, 0.4);
 }
 
 @media (min-width: 768px) {
     .contactImage {
         width: 48px;
         height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flag {
+        width: 108px;
+        height: 72px;
+    }
+
+    .information > section > h2 {
+        font-size: 2rem;
     }
 }
