@@ -5,13 +5,12 @@
 }
 
 .information > section {
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
     text-align: center;
-    border-bottom: 2px solid var(--color-primary);
 }
 
 .information > section:last-child {
-    border-bottom: none;
+    border-bottom: 2px solid var(--color-primary);
 }
 
 .information > section > h2 {
@@ -192,6 +191,11 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
+    transition: all 0.3s ease-in-out;
+}
+
+.contactImage:hover {
+    transform: scale(1.2);
 }
 
 .linkedinLink {
