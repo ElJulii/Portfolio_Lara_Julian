@@ -330,12 +330,16 @@
 
 /* Download */
 
-.downloadButton:last-child {
-    margin-top: 2rem;
+.download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .downloadButton {
-    display: inline-block;
+    display: block;
+    max-width: 40%;
     background: linear-gradient(90deg, var(--background-box), var(--color-secondary));
     color: var(--color-text);
     text-decoration: none;
