@@ -18,7 +18,7 @@ const tools = [
 
 export default function Introduction() {
   return (
-    <div className={Styles.head}>
+    <div className={Styles.head} id="home">
         <section className={Styles.introduction}>
         <img
             className={Styles.picture}
@@ -30,7 +30,7 @@ export default function Introduction() {
         </p>
         </section>
 
-        <section className={Styles.tools}>
+        <section className={Styles.tools} id="skills">
         <h2>Skills and Programmings languages</h2>
         <ul className={Styles.toolsList}>
             {tools.map((tool) => (

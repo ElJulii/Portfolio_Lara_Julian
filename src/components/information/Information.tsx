@@ -55,7 +55,7 @@ export default function Information() {
 
   return (
     <div className={Styles.information}>
-      <section className={Styles.experience}>
+      <section className={Styles.experience} id="experience">
         <h2>Experience</h2>
         {experience.map((item) => (
           <article className={Styles.experienceCard} key={item.role}>
@@ -96,7 +96,7 @@ export default function Information() {
         </ul>
       </section>
 
-      <section className={Styles.contact}>
+      <section className={Styles.contact} id="contact">
         <h2>Contact</h2>
         <ul className={Styles.contactList}>
           <li>
@@ -143,7 +143,7 @@ export default function Information() {
         </a>
       </section>
 
-      <section className={Styles.download}>
+      <section className={Styles.download} id="resume">
         <h2>Resume</h2>
         <a className={Styles.downloadButton} href="/cv/Curri_pro_es.pdf" download>
           Download CV (PDF)
