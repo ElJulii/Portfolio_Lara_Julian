@@ -145,8 +145,11 @@ export default function Information() {
 
       <section className={Styles.download} id="resume">
         <h2>Resume</h2>
-        <a className={Styles.downloadButton} href="/cv/Curri_pro_es.pdf" download>
-          Download CV (PDF)
+        <a className={Styles.downloadButton} href="/cv/Curriculum_en.pdf" download>
+          Download CV (PDF) - English Version
+        </a>
+        <a className={Styles.downloadButton} href="/cv/Curriculum_es.pdf" download>
+          Download CV (PDF) - Spanish Version
         </a>
       </section>
 

@@ -329,6 +329,11 @@
 }
 
 /* Download */
+
+.downloadButton:last-child {
+    margin-top: 2rem;
+}
+
 .downloadButton {
     display: inline-block;
     background: linear-gradient(90deg, var(--background-box), var(--color-secondary));
