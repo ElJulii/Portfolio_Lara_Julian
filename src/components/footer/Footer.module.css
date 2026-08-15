@@ -41,7 +41,7 @@
     margin: 0;
     max-width: 380px;
     line-height: 1.6;
-    color: var(--color-primary);
+    color: var(--color-text);
     opacity: 0.85;
 }
 
@@ -69,7 +69,7 @@
 
 .linkList a {
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-text);
     font-weight: bold;
     position: relative;
     transition: color 0.3s ease;
@@ -162,13 +162,13 @@
 .copyright {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--color-primary);
+    color: var(--color-text);
     opacity: 0.75;
 }
 
 .backToTop {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-text);
     font-weight: bold;
     font-size: 0.9rem;
     transition: color 0.3s ease;

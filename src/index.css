@@ -1,7 +1,7 @@
 :root {
-  --background-box: #dededf;
+  --background-box: #04045e;
   --color-primary: #0070f3;
-  --color-secondary: #366ba8;
+  --color-secondary: #478ad6;
   --color-text: #ffffff;
   --color-text-alter: #fbfbfb;
 
@@ -38,6 +38,10 @@
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
+}
+
+[id] {
+  scroll-margin-top: 90px;
 }
 
 #root {

@@ -102,6 +102,7 @@
     font-size: 1.15rem;
     line-height: 1.6;
     flex: 1;
+    color: var(--color-text);
 }
 
 .tagList {

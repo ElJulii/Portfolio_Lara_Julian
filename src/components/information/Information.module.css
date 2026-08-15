@@ -99,6 +99,7 @@
     margin: 0;
     line-height: 1.7;
     font-size: 1.3rem;
+    color: var(--color-text);
 }
 
 /* Languages */
@@ -152,6 +153,7 @@
 .languageName {
     font-weight: bold;
     font-size: 1.3rem;
+    color: var(--color-text);
 }
 
 .languageLevel {
@@ -170,6 +172,7 @@
     text-align: left;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--color-text);
 }
 
 .educationCard:hover {
@@ -206,6 +209,7 @@
 
 .certificationItem {
     display: flex;
+    Color: var(--color-primary);
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
