@@ -1,9 +1,9 @@
 :root {
-  --background-box: #04045e;
-  --color-primary: #0070f3;
-  --color-secondary: #478ad6;
-  --color-text: #ffffff;
-  --color-text-alter: #fbfbfb;
+  --background-box: #101a3a;
+  --color-primary: #2563eb;
+  --color-secondary: #0d9488;
+  --color-text: #eef2fb;
+  --color-text-alter: #f8fafc;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;

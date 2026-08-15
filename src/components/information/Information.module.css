@@ -255,6 +255,12 @@
 }
 
 /* Contact */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contactList {
     display: flex;
     flex-wrap: wrap;
