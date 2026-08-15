@@ -167,7 +167,7 @@
     .navList {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         height: 100vh;
         width: min(320px, 80vw);
         flex-direction: column;
@@ -177,12 +177,13 @@
         background-color: var(--background-box);
         padding: 6rem 2rem 2rem;
         box-shadow: -8px 0 24px rgba(0, 0, 0, 0.2);
-        transition: right 0.35s ease;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
         z-index: 1000;
     }
 
     .navListOpen {
-        right: 0;
+        transform: translateX(0);
     }
 
     .button_contact {

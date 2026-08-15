@@ -19,6 +19,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isMenuOpen) return
+
       const currentScrollY = window.scrollY
       setIsScrolled(currentScrollY > 10)
 
@@ -33,19 +35,23 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isMenuOpen])
 
   useEffect(() => {
     if (!isMenuOpen) return
+
+    setIsHidden(false)
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsMenuOpen(false)
     }
 
+    document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
+      document.documentElement.style.overflow = ''
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
