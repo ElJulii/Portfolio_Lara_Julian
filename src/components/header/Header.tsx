@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import Styles from './Header.module.css'
-
-const navLinks = [
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'CV', href: '#resume' },
-]
+import { useLanguage } from '../../i18n/LanguageContext.tsx'
 
 const linkedinUrl = 'https://www.linkedin.com/in/julian-lara-5920193a7/'
 
 export default function Header() {
+  const { toggleLanguage, t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const lastScrollY = useRef(0)
+
+  const navLinks = [
+    { name: t.header.experience, href: '#experience' },
+    { name: t.header.projects, href: '#projects' },
+    { name: t.header.cv, href: '#resume' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +66,7 @@ export default function Header() {
           type="button"
           className={`${Styles.burger} ${isMenuOpen ? Styles.burgerOpen : ''}`}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isMenuOpen ? t.header.closeMenu : t.header.openMenu}
           aria-expanded={isMenuOpen}
           aria-controls="primary-navigation"
         >
@@ -84,13 +86,26 @@ export default function Header() {
           ))}
           <li>
             <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-              LinkedIn
+              {t.header.linkedin}
             </a>
           </li>
           <li>
             <a className={Styles.button_contact} href="#contact" onClick={closeMenu}>
-              Contact
+              {t.header.contact}
             </a>
+          </li>
+          <li>
+            <button
+              type="button"
+              className={Styles.langToggle}
+              onClick={() => {
+                toggleLanguage()
+                closeMenu()
+              }}
+              aria-label={t.header.langToggleAria}
+            >
+              {t.header.langToggle}
+            </button>
           </li>
         </ul>
 

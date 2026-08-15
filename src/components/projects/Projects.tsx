@@ -1,11 +1,10 @@
 import Styles from './Projects.module.css'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
+import { useLanguage } from '../../i18n/LanguageContext.tsx'
 
 const projects = [
   {
     name: 'BioAlert',
-    description:
-      'Full stack platform for reporting animal abuse cases, with AI-based spam detection to filter false reports before operator review.',
     stack: ['Next.js', 'NestJS', 'PostgreSQL', 'Prisma', 'YOLOv8 AI'],
     image: '/imgProjects/BioAlertWeb.png',
     repo: 'https://github.com/ElJulii/BioAlert-main',
@@ -13,8 +12,6 @@ const projects = [
   },
   {
     name: 'The World War II',
-    description:
-      'Educational platform presenting World War II from the perspective of multiple countries, focused on responsive UI and reusable components.',
     stack: ['Next.js'],
     image: '/imgProjects/ww2Web.png',
     repo: 'https://github.com/ElJulii/WW2_legacy',
@@ -22,8 +19,6 @@ const projects = [
   },
   {
     name: 'Latin Day',
-    description:
-      "Official registration platform for Kazan Federal University's Latin America Day cultural event, built collaboratively with a university dev team.",
     stack: ['React'],
     image: '/imgProjects/latinDay.png',
     repo: 'https://github.com/DataJoshua/latinoamerica-ru',
@@ -31,8 +26,6 @@ const projects = [
   },
   {
     name: 'Apartments Marketplace',
-    description:
-      'Responsive real estate website for apartment listings in Quito, Ecuador, with image galleries and inquiry forms.',
     stack: ['React'],
     image: '/imgProjects/apartmentsWeb.png',
     repo: 'https://github.com/ElJulii/Apartments_Laras',
@@ -40,8 +33,6 @@ const projects = [
   },
   {
     name: '500/700 Company Website',
-    description:
-      'Modern commercial website showcasing artistic models and multiple product categories with user-friendly navigation.',
     stack: ['React'],
     image: '/imgProjects/500-700Web.png',
     repo: 'https://github.com/ElJulii/fivetoseven_interview',
@@ -51,6 +42,7 @@ const projects = [
 
 export default function Projects() {
   const { ref, isVisible } = useRevealOnScroll<HTMLElement>()
+  const { t } = useLanguage()
 
   return (
     <section
@@ -58,16 +50,16 @@ export default function Projects() {
       className={`${Styles.projects} ${isVisible ? Styles.isVisible : ''}`}
       id="projects"
     >
-      <h2>Projects</h2>
+      <h2>{t.projects.title}</h2>
       <div className={Styles.grid}>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <article className={Styles.card} key={project.name}>
             <div className={Styles.imageWrapper}>
               <img className={Styles.image} src={project.image} alt={`${project.name} preview`} />
             </div>
             <div className={Styles.content}>
               <h3 className={Styles.title}>{project.name}</h3>
-              <p className={Styles.description}>{project.description}</p>
+              <p className={Styles.description}>{t.projects.items[index].description}</p>
               <ul className={Styles.tagList}>
                 {project.stack.map((tech) => (
                   <li className={Styles.tag} key={tech}>{tech}</li>
@@ -80,7 +72,7 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Code
+                  {t.projects.code}
                 </a>
                 {project.demo && (
                   <a
@@ -89,7 +81,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Live Demo
+                    {t.projects.liveDemo}
                   </a>
                 )}
               </div>

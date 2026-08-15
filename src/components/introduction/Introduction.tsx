@@ -1,4 +1,5 @@
 import Styles from './Introduction.module.css'
+import { useLanguage } from '../../i18n/LanguageContext.tsx'
 
 const tools = [
   { name: 'HTML5', image: '/imgTools/html_img.png', background: '#b13d1d', color: '#ffffff' },
@@ -17,6 +18,8 @@ const tools = [
 ]
 
 export default function Introduction() {
+  const { t } = useLanguage()
+
   return (
     <div className={Styles.head} id="home">
         <section className={Styles.introduction}>
@@ -26,16 +29,12 @@ export default function Introduction() {
             alt="Julian Lara"
         />
         <p className={Styles.text}>
-            Hi! I'm Julian Lara — a <strong>Software Engineer</strong> from Ecuador, graduated from
-            <strong>Kazan Federal University.</strong> I specialize in building response, scalable
-            web applications with React, Next.js, TypeScript, Nest.js and Java with Spring Boot. 
-            I love solving complex problems and crafting clean, maintainable software — currently 
-            looking for my next challenges as a Fronted, Backend and Full Stack Engineer.
+            {t.intro.text}
         </p>
         </section>
 
         <section className={Styles.tools} id="skills">
-        <h2>Skills and Programmings languages</h2>
+        <h2>{t.intro.skillsTitle}</h2>
         <ul className={Styles.toolsList}>
             {tools.map((tool) => (
                 <li

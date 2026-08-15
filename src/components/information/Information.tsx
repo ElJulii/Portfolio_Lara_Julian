@@ -1,50 +1,19 @@
 import { useState } from 'react'
 import Styles from './Information.module.css'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
+import { useLanguage } from '../../i18n/LanguageContext.tsx'
 
-const experience = [
-  {
-    role: 'Frontend Developer — Collaboration',
-    place: 'Latin America Day, Kazan Federal University',
-    date: 'Kazan, Russia',
-    description:
-      "Part of the development team that built the official registration platform for one of the university's most important international cultural events. Worked with React, Git and collaborative workflows, contributing frontend features and integrating the interface with the rest of the system.",
-  },
-  {
-    role: 'Customer Support',
-    place: 'ItContact company',
-    date: 'Kazan, Russia - 1 year',
-    description:
-      "Searched and managed customer records in the company's database to resolve account-related issues and inquiries. Handled user account administration end-to-end, including creating, editing, blocking and deleting user accounts based on support requests.",
+const languageFlags = ['/imgFlags/img-flag-ecu.png', '/imgFlags/img-flag-uk.png', '/imgFlags/img-flag-ru.png']
 
-  }
-]
-
-const languages = [
-  { name: 'Spanish', level: 'Native', flag: '/imgFlags/img-flag-ecu.png' },
-  { name: 'English', level: 'B2', flag: '/imgFlags/img-flag-uk.png' },
-  { name: 'Russian', level: 'B2', flag: '/imgFlags/img-flag-ru.png' },
-]
-
-const education = {
-  degree: 'Software Engineering',
-  school: 'Kazan Federal University',
-  place: 'Kazan, Russia',
-  date: 'Graduated in 2026',
-}
-
-const certifications = [
-  { name: 'UI/UX Design Certification', place: 'Kazan Federal University', date: '2026' },
-  { name: 'English Certification B2', place: 'University of Cambridge', date: '2021' },
-]
-
-const contacts = [
-  { name: 'Email', image: '/imgContacts/img-mail.png', href: 'mailto:juli2003juli@gmail.com' },
-  { name: 'GitHub', image: '/imgContacts/img2-git.png', href: 'https://github.com/ElJulii' },
-  { name: 'Telegram', image: '/imgContacts/img-telegram.png', href: 'https://web.telegram.org/k/#@ElJulii28' },
+const contactImages = ['/imgContacts/img-mail.png', '/imgContacts/img2-git.png', '/imgContacts/img-telegram.png']
+const contactHrefs = [
+  'mailto:juli2003juli@gmail.com',
+  'https://github.com/ElJulii',
+  'https://web.telegram.org/k/#@ElJulii28',
 ]
 
 export default function Information() {
+  const { t } = useLanguage()
   const [showCopyToast, setShowCopyToast] = useState(false)
   const experienceReveal = useRevealOnScroll<HTMLElement>()
   const languagesReveal = useRevealOnScroll<HTMLElement>()
@@ -53,11 +22,13 @@ export default function Information() {
   const downloadReveal = useRevealOnScroll<HTMLElement>()
 
   const handleCopyEmail = async () => {
-    const email = contacts[0].href.replace('mailto:', '')
+    const email = contactHrefs[0].replace('mailto:', '')
     await navigator.clipboard.writeText(email)
     setShowCopyToast(true)
     setTimeout(() => setShowCopyToast(false), 5000)
   }
+
+  const contactNames = [t.contact.email, t.contact.github, t.contact.telegram]
 
   return (
     <div className={Styles.information}>
@@ -66,9 +37,9 @@ export default function Information() {
         className={`${Styles.experience} ${experienceReveal.isVisible ? Styles.isVisible : ''}`}
         id="experience"
       >
-        <h2>Experience</h2>
+        <h2>{t.experience.title}</h2>
         <div className={Styles.experienceList}>
-          {experience.map((item) => (
+          {t.experience.items.map((item) => (
             <article className={Styles.experienceCard} key={item.role}>
               <h3 className={Styles.experienceRole}>{item.role}</h3>
               <p className={Styles.experiencePlace}>{item.place} · {item.date}</p>
@@ -76,18 +47,18 @@ export default function Information() {
             </article>
           ))}
         </div>
-        
+
       </section>
 
       <section
         ref={languagesReveal.ref}
         className={`${Styles.languages} ${languagesReveal.isVisible ? Styles.isVisible : ''}`}
       >
-        <h2>Languages</h2>
+        <h2>{t.languages.title}</h2>
         <ul className={Styles.languageList}>
-          {languages.map((lang) => (
+          {t.languages.items.map((lang, index) => (
             <li className={Styles.languageItem} key={lang.name}>
-              <img className={Styles.flag} src={lang.flag} alt={`${lang.name} flag`} />
+              <img className={Styles.flag} src={languageFlags[index]} alt={`${lang.name} flag`} />
               <span className={Styles.languageName}>{lang.name}</span>
               <span className={Styles.languageLevel}>{lang.level}</span>
             </li>
@@ -99,14 +70,14 @@ export default function Information() {
         ref={educationReveal.ref}
         className={`${Styles.education} ${educationReveal.isVisible ? Styles.isVisible : ''}`}
       >
-        <h2>Education &amp; Certifications</h2>
+        <h2>{t.education.title}</h2>
         <article className={Styles.educationCard}>
-          <h3 className={Styles.educationTitle}>{education.degree}</h3>
-          <p className={Styles.educationPlace}>{education.school} · {education.place}</p>
-          <p className={Styles.educationDate}>{education.date}</p>
+          <h3 className={Styles.educationTitle}>{t.education.degree}</h3>
+          <p className={Styles.educationPlace}>{t.education.school} · {t.education.place}</p>
+          <p className={Styles.educationDate}>{t.education.date}</p>
         </article>
         <ul className={Styles.certificationList}>
-          {certifications.map((cert) => (
+          {t.education.certifications.map((cert) => (
             <li className={Styles.certificationItem} key={cert.name}>
               <span className={Styles.certificationName}>{cert.name}</span>
               <span className={Styles.certificationMeta}>{cert.place} · {cert.date}</span>
@@ -120,7 +91,7 @@ export default function Information() {
         className={`${Styles.contact} ${contactReveal.isVisible ? Styles.isVisible : ''}`}
         id="contact"
       >
-        <h2>Contact</h2>
+        <h2>{t.contact.title}</h2>
         <ul className={Styles.contactList}>
           <li>
               <span
@@ -129,30 +100,30 @@ export default function Information() {
                 role="button"
                 tabIndex={0}
               >
-                <img className={Styles.contactImage} src={contacts[0].image} alt={contacts[0].name} />
-                <span>{contacts[0].name}</span>
+                <img className={Styles.contactImage} src={contactImages[0]} alt={contactNames[0]} />
+                <span>{contactNames[0]}</span>
               </span>
           </li>
           <li>
             <a
               className={Styles.contactLink}
-              href={contacts[1].href}
+              href={contactHrefs[1]}
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img className={Styles.contactImage} src={contacts[1].image} alt={contacts[1].name} />
-              <span>{contacts[1].name}</span>
+              <img className={Styles.contactImage} src={contactImages[1]} alt={contactNames[1]} />
+              <span>{contactNames[1]}</span>
             </a>
           </li>
           <li>
             <a
               className={Styles.contactLink}
-              href={contacts[2].href}
+              href={contactHrefs[2]}
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img className={Styles.contactImage} src={contacts[2].image} alt={contacts[2].name} />
-              <span>{contacts[2].name}</span>
+              <img className={Styles.contactImage} src={contactImages[2]} alt={contactNames[2]} />
+              <span>{contactNames[2]}</span>
             </a>
           </li>
         </ul>
@@ -162,7 +133,7 @@ export default function Information() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Connect on LinkedIn
+          {t.contact.connectLinkedin}
         </a>
       </section>
 
@@ -171,17 +142,17 @@ export default function Information() {
         className={`${Styles.download} ${downloadReveal.isVisible ? Styles.isVisible : ''}`}
         id="resume"
       >
-        <h2>Resume</h2>
+        <h2>{t.resume.title}</h2>
         <a className={Styles.downloadButton} href="/cv/Curriculum_en.pdf" download>
-          Download CV (PDF) - English Version
+          {t.resume.downloadEn}
         </a>
         <a className={Styles.downloadButton} href="/cv/Curriculum_es.pdf" download>
-          Download CV (PDF) - Spanish Version
+          {t.resume.downloadEs}
         </a>
       </section>
 
       {showCopyToast && (
-        <div className={Styles.copyToast}>Se ha copiado el correo correctamente!</div>
+        <div className={Styles.copyToast}>{t.contact.copyToast}</div>
       )}
     </div>
   )

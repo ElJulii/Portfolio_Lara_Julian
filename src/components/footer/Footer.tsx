@@ -1,12 +1,6 @@
 import { useState } from 'react'
 import Styles from './Footer.module.css'
-
-const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
-]
+import { useLanguage } from '../../i18n/LanguageContext.tsx'
 
 const socials = [
   { name: 'GitHub', image: '/imgContacts/img2-git.png', href: 'https://github.com/ElJulii' },
@@ -16,7 +10,15 @@ const socials = [
 const email = 'juli2003juli@gmail.com'
 
 export default function Footer() {
+  const { t } = useLanguage()
   const [showCopyToast, setShowCopyToast] = useState(false)
+
+  const quickLinks = [
+    { name: t.footer.quickLinks.home, href: '#home' },
+    { name: t.footer.quickLinks.experience, href: '#experience' },
+    { name: t.footer.quickLinks.skills, href: '#skills' },
+    { name: t.footer.quickLinks.contact, href: '#contact' },
+  ]
 
   const handleCopyEmail = async () => {
     await navigator.clipboard.writeText(email)
@@ -29,14 +31,14 @@ export default function Footer() {
       <div className={Styles.content}>
         <div className={Styles.brand}>
           <span className={Styles.brandName}>Julian Lara</span>
-          <p className={Styles.brandTagline}>Software Engineer</p>
+          <p className={Styles.brandTagline}>{t.footer.tagline}</p>
           <p className={Styles.brandText}>
-            Building clean, reliable web experiences with React, TypeScript and modern tooling.
+            {t.footer.text}
           </p>
         </div>
 
         <nav className={Styles.column}>
-          <h3 className={Styles.columnTitle}>Quick Links</h3>
+          <h3 className={Styles.columnTitle}>{t.footer.quickLinksTitle}</h3>
           <ul className={Styles.linkList}>
             {quickLinks.map((link) => (
               <li key={link.name}>
@@ -47,7 +49,7 @@ export default function Footer() {
         </nav>
 
         <div className={Styles.column}>
-          <h3 className={Styles.columnTitle}>Connect</h3>
+          <h3 className={Styles.columnTitle}>{t.footer.connectTitle}</h3>
           <ul className={Styles.socialList}>
             <li>
               <span
@@ -56,8 +58,8 @@ export default function Footer() {
                 role="button"
                 tabIndex={0}
               >
-                <img className={Styles.socialIcon} src="/imgContacts/img-mail.png" alt="Email" />
-                <span>Email</span>
+                <img className={Styles.socialIcon} src="/imgContacts/img-mail.png" alt={t.footer.email} />
+                <span>{t.footer.email}</span>
               </span>
             </li>
             {socials.map((social) => (
@@ -85,22 +87,22 @@ export default function Footer() {
             </li>
           </ul>
           <a className={Styles.resumeLink} href="/cv/Curri_pro_es.pdf" download>
-            Download CV
+            {t.footer.downloadCv}
           </a>
         </div>
       </div>
 
       <div className={Styles.bottomBar}>
         <p className={Styles.copyright}>
-          &copy; {new Date().getFullYear()} Julian Lara. All rights reserved.
+          &copy; {new Date().getFullYear()} Julian Lara. {t.footer.copyright}
         </p>
         <a className={Styles.backToTop} href="#home">
-          Back to top ↑
+          {t.footer.backToTop}
         </a>
       </div>
 
       {showCopyToast && (
-        <div className={Styles.copyToast}>Se ha copiado el correo correctamente!</div>
+        <div className={Styles.copyToast}>{t.footer.copyToast}</div>
       )}
     </footer>
   )
