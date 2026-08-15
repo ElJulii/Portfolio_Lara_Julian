@@ -44,6 +44,16 @@
   scroll-margin-top: 90px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 #root {
   display: grid;
   grid-template-rows: auto 1fr auto;

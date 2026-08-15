@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Styles from './Information.module.css'
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 
 const experience = [
   {
@@ -45,6 +46,11 @@ const contacts = [
 
 export default function Information() {
   const [showCopyToast, setShowCopyToast] = useState(false)
+  const experienceReveal = useRevealOnScroll<HTMLElement>()
+  const languagesReveal = useRevealOnScroll<HTMLElement>()
+  const educationReveal = useRevealOnScroll<HTMLElement>()
+  const contactReveal = useRevealOnScroll<HTMLElement>()
+  const downloadReveal = useRevealOnScroll<HTMLElement>()
 
   const handleCopyEmail = async () => {
     const email = contacts[0].href.replace('mailto:', '')
@@ -55,7 +61,11 @@ export default function Information() {
 
   return (
     <div className={Styles.information}>
-      <section className={Styles.experience} id="experience">
+      <section
+        ref={experienceReveal.ref}
+        className={`${Styles.experience} ${experienceReveal.isVisible ? Styles.isVisible : ''}`}
+        id="experience"
+      >
         <h2>Experience</h2>
         <div className={Styles.experienceList}>
           {experience.map((item) => (
@@ -69,7 +79,10 @@ export default function Information() {
         
       </section>
 
-      <section className={Styles.languages}>
+      <section
+        ref={languagesReveal.ref}
+        className={`${Styles.languages} ${languagesReveal.isVisible ? Styles.isVisible : ''}`}
+      >
         <h2>Languages</h2>
         <ul className={Styles.languageList}>
           {languages.map((lang) => (
@@ -82,7 +95,10 @@ export default function Information() {
         </ul>
       </section>
 
-      <section className={Styles.education}>
+      <section
+        ref={educationReveal.ref}
+        className={`${Styles.education} ${educationReveal.isVisible ? Styles.isVisible : ''}`}
+      >
         <h2>Education &amp; Certifications</h2>
         <article className={Styles.educationCard}>
           <h3 className={Styles.educationTitle}>{education.degree}</h3>
@@ -99,7 +115,11 @@ export default function Information() {
         </ul>
       </section>
 
-      <section className={Styles.contact} id="contact">
+      <section
+        ref={contactReveal.ref}
+        className={`${Styles.contact} ${contactReveal.isVisible ? Styles.isVisible : ''}`}
+        id="contact"
+      >
         <h2>Contact</h2>
         <ul className={Styles.contactList}>
           <li>
@@ -146,7 +166,11 @@ export default function Information() {
         </a>
       </section>
 
-      <section className={Styles.download} id="resume">
+      <section
+        ref={downloadReveal.ref}
+        className={`${Styles.download} ${downloadReveal.isVisible ? Styles.isVisible : ''}`}
+        id="resume"
+      >
         <h2>Resume</h2>
         <a className={Styles.downloadButton} href="/cv/Curriculum_en.pdf" download>
           Download CV (PDF) - English Version

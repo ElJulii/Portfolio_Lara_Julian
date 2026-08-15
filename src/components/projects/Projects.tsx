@@ -1,4 +1,5 @@
 import Styles from './Projects.module.css'
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 
 const projects = [
   {
@@ -49,8 +50,14 @@ const projects = [
 ]
 
 export default function Projects() {
+  const { ref, isVisible } = useRevealOnScroll<HTMLElement>()
+
   return (
-    <section className={Styles.projects} id="projects">
+    <section
+      ref={ref}
+      className={`${Styles.projects} ${isVisible ? Styles.isVisible : ''}`}
+      id="projects"
+    >
       <h2>Projects</h2>
       <div className={Styles.grid}>
         {projects.map((project) => (
