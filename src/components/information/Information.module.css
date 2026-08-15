@@ -58,9 +58,15 @@
     gap: 2rem;
 }
 
+.experienceList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.75rem;
+}
+
 .experienceCard {
-    max-width: 700px;
-    margin: 0 auto;
+    flex: 1 1 40%;
     background-color: var(--background-box);
     border: 2px solid var(--color-primary);
     border-radius: 14px;
@@ -339,7 +345,7 @@
 
 .downloadButton {
     display: block;
-    max-width: 40%;
+    flex: 1 1 30%;
     background: linear-gradient(90deg, var(--background-box), var(--color-secondary));
     color: var(--color-text);
     text-decoration: none;

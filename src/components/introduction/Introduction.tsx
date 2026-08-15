@@ -26,7 +26,11 @@ export default function Introduction() {
             alt="Julian Lara"
         />
         <p className={Styles.text}>
-            Hi! My name is Julian Lara, I am a <strong>Software Engineer</strong>, and I am from Ecuador
+            Hi! I'm Julian Lara — a <strong>Software Engineer</strong> from Ecuador, graduated from
+            <strong>Kazan Federal University.</strong> I specialize in building response, scalable
+            web applications with React, Next.js, TypeScript, Nest.js and Java with Spring Boot. 
+            I love solving complex problems and crafting clean, maintainable software — currently 
+            looking for my next challenges as a Fronted, Backend and Full Stack Engineer.
         </p>
         </section>
 

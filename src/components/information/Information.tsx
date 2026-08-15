@@ -57,13 +57,16 @@ export default function Information() {
     <div className={Styles.information}>
       <section className={Styles.experience} id="experience">
         <h2>Experience</h2>
-        {experience.map((item) => (
-          <article className={Styles.experienceCard} key={item.role}>
-            <h3 className={Styles.experienceRole}>{item.role}</h3>
-            <p className={Styles.experiencePlace}>{item.place} · {item.date}</p>
-            <p className={Styles.experienceText}>{item.description}</p>
-          </article>
-        ))}
+        <div className={Styles.experienceList}>
+          {experience.map((item) => (
+            <article className={Styles.experienceCard} key={item.role}>
+              <h3 className={Styles.experienceRole}>{item.role}</h3>
+              <p className={Styles.experiencePlace}>{item.place} · {item.date}</p>
+              <p className={Styles.experienceText}>{item.description}</p>
+            </article>
+          ))}
+        </div>
+        
       </section>
 
       <section className={Styles.languages}>

@@ -26,7 +26,7 @@
 }
 
 .text {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 35px;
     color: var(--color-primary);
 }
@@ -39,6 +39,12 @@
     .introduction {
         background-color: var(--background-box);
         border-radius: 10px 10px 0 0;
+    }
+
+    .text {
+        font-size: 1.3rem;
+        line-height: 35px;
+        color: var(--color-primary);
     }
 }
 
