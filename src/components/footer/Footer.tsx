@@ -86,7 +86,7 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-          <a className={Styles.resumeLink} href="/cv/Curri_pro_es.pdf" download>
+          <a className={Styles.resumeLink} href="/cv/Curriculum_en.pdf" download>
             {t.footer.downloadCv}
           </a>
         </div>
